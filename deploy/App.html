@@ -186,7 +186,10 @@ function initTaskboard() {
             }
 
             html.push('<div style="float: left;" class="id"><a href="' + '__SERVER_URL__' + '/#/detail/' + storyType + '/' + value.ObjectID + '" target="_blank">' + value.FormattedID + '</a></div>');
-            html.push('<div style="float: right;"> Story Points: ' + value.PlanEstimate + '</div>');
+            if(value.PlanEstimate){
+                html.push('<div style="float: right;"> Story Points: ' + value.PlanEstimate + '</div>');
+            }
+
             html.push('<div class="clear"></div>');
             html.push('<div style="display: block;" class="name">' + RALLY.toolkit.niceSubstring(value.Name, 100) + '</div>');
             html.push('<div class="' + ownerClass.join(' ') + '">' + owner + '</div>');
@@ -829,10 +832,6 @@ YAHOO.util.Event.addListener(window, 'load', initTaskboard);
 
 <style type="text/css">
     /** Customize the default grid styles **/
-    body {
-        font-family: tahoma, geneva, helvetica, arial, sans-serif;
-    }
-
     a {
         text-decoration: none;
         color: #337ec6;
@@ -852,7 +851,7 @@ YAHOO.util.Event.addListener(window, 'load', initTaskboard);
 
     /** Custom styles for this implementation **/
     #wrapper {
-        margin: .8em;
+        margin: .1em;
     }
 
     #header {
